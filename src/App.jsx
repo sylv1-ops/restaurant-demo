@@ -11,11 +11,11 @@ export default function App() {
   const [showPayment, setShowPayment] = useState(false);
 
   function addToCart(dish) {
-    setCart([...cart, { ...dish, quantity: 1 }]);
+    setCart([...cart, { ...dish, quantity: 1, cartItemId: Date.now() + Math.random() }]);
   }
 
-  function removeFromCart(id) {
-    setCart(cart.filter((item) => item.id === id));
+  function removeFromCart(cartItemId) {
+    setCart(cart.filter((item) => item.cartItemId !== cartItemId));
   }
 
   const cartCount = cart.length;
